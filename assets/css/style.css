@@ -1,0 +1,199 @@
+:root {
+    --ff-base: 'Lexend Deca', sans-serif;
+    --ff-accent: 'Big Shoulders Display', cursive;
+
+    --fs-base: .9375rem;
+    --fs-title: 2.8rem;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    --clr-orange-light: hsl(31, 77%, 52%);
+    --clr-cyan-dark: hsl(184, 100%, 22%);
+    --clr-cyan-darker: hsl(179, 100%, 13%);
+
+    --clr-white: hsla(0, 0%, 100%, 0.75);
+    --clr-gray-light: hsl(0, 0%, 95%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family: var(--ff-base);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    -webkit-font-smoothing: antialiased;
+
+    line-height: 1.6;
+}
+
+main {
+    display: grid;
+    place-content: center;
+
+    min-height: 100vh;
+    padding: 2em;
+}
+
+/* Utilities */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* Cards */
+
+.cards {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card {
+    max-width: 20rem;
+    padding: 3em;
+    
+    color: var(--clr-white);
+}
+
+.card > * {
+    margin: 0 0 2em;
+}
+
+.card > :last-child {
+    margin: 0;
+}
+
+.card-title {
+    margin-bottom: .4em;
+
+    font-family: var(--ff-accent);
+    font-size: var(--fs-title);
+    font-weight: var(--fw-bold);
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: var(--clr-gray-light);
+}
+
+.card-sedans::before,
+.card-suvs::before,
+.card-luxury::before {
+    content: '';
+
+    display: block;
+
+    width: 4rem;
+    height: 2.5rem;
+    margin-bottom: 2rem;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-sedans {
+    background-color: var(--clr-orange-light);
+}
+
+.card-sedans::before {
+    background-image: url('../images/icon-sedans.svg');
+}
+
+.card-suvs {
+    background-color: var(--clr-cyan-dark);
+}
+
+.card-suvs::before {
+    background-image: url('../images/icon-suvs.svg');
+}
+
+.card-luxury {
+    background-color: var(--clr-cyan-darker);
+}
+
+.card-luxury::before {
+    background-image: url('../images/icon-luxury.svg');
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+
+    padding: .6em 2em;
+    border: 2px solid transparent;
+    border-radius: 2em;
+    
+    font-size: 1rem;
+
+    text-decoration: none;
+    text-transform: capitalize;
+
+    background-color: var(--clr-gray-light);
+    color: black;
+
+    transition: border 250ms, background-color 250ms;
+}
+
+.card-sedans .btn {
+    color: var(--clr-orange-light);
+}
+
+.card-suvs .btn {
+    color: var(--clr-cyan-dark);
+}
+
+.card-luxury .btn {
+    color: var(--clr-cyan-darker);
+}
+
+.btn:hover,
+.btn:focus {
+    border: 2px solid var(--clr-gray-light);
+
+    background-color: transparent;
+    color: var(--clr-gray-light);
+}
+
+@media (min-width: 900px) {
+    :root {
+        --fs-base: 1rem;
+    }
+
+    .cards {
+        display: flex;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+
+        flex: 1 1 100%;
+    }
+
+    .card-description {
+        margin-bottom: 6rem;
+    }
+
+    .card .btn {
+        align-self: flex-start;
+    }
+    
+    .card > :last-child {
+        margin-top: auto;
+    }
+}
